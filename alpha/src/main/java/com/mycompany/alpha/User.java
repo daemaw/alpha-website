@@ -21,7 +21,7 @@ public class User {
     public User(){}
     public User(int uid, boolean admin, String username, String vorname, String nachname, String passwort) {
         this.uid = uid;
-        this.addmin = admin;
+        this.admin = admin;
         this.username = username;
         this.vorname = vorname;
         this.nachname = nachname;
@@ -48,7 +48,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(string username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
