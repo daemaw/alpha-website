@@ -1,6 +1,6 @@
 create table users(
 uid int primary key generated always as identity,
-admin boolean not null,
+isadmin boolean not null,
 username varchar(30) unique,
 vorname varchar(30) not null,
 nachname varchar(30) not null,
