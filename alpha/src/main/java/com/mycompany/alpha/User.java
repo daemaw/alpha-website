@@ -18,5 +18,63 @@ public class User {
     private String nachname;
     private String passwort;
 
+    public User(){}
+    public User(int uid, boolean admin, String username, String vorname, String nachname, String passwort) {
+        this.uid = uid;
+        this.addmin = admin;
+        this.username = username;
+        this.vorname = vorname;
+        this.nachname = nachname;
+        this.passwort = passwort;
+}
     
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(string username) {
+        this.username = username;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public void setNachname (String nachname) {
+        this.nachname = nachname;
+    }
+
+    public String getPasswort() {
+        return passwort;
+    }
+
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
+    }
+
+
 }
