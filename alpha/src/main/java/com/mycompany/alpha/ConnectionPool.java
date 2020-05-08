@@ -1,4 +1,4 @@
-package spe.mch;
+package com.mycompany.alpha;
 import java.util.Stack;
 import java.sql.*;
 
@@ -23,9 +23,9 @@ public class ConnectionPool {
     }
     
     private synchronized Connection createConnection(Connection conn){
-        String user = "trainer";
-        String password = "12345678";
-        String url = "jdbc:derby://localhost:1527/gaestebuchdb";
+        String user = "alpha";
+        String password = "alpha";
+        String url = "jdbc:derby://localhost:1527/Alpha";
         
         try{
           conn = DriverManager.getConnection(url, user, password);  

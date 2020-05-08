@@ -1,4 +1,4 @@
-package spe.mch;
+package com.mycompany.alpha;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
