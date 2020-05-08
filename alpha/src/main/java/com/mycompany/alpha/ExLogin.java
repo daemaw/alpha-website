@@ -49,7 +49,11 @@ public class ExLogin extends HttpServlet {
             
             ResultSet rs = pstm.executeQuery();
             if (rs.next()){
+                //response.getWriter().println(request.getSession().getId());
                 
+                //TODO
+                //User user = new User(rs.getInt("uid"), username, rs.getString("vorname"), rs.getString("nachname"), passwort, rs.getBoolean("isadmin"));
+                request.getSession().setAttribute("user", "user");
             }
             
         }
