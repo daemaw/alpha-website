@@ -12,12 +12,13 @@
         
     </head> 
     
-    <body>
-        <h1><b>Alpha Airlines</b></h1>
+    <body background="Design.jpg">
+        <h1><b>&nbsp Airlines</b> <img src="pic/Logo.jpg" height="50px"width="100px" style="float:left;display:inline-block;"></h1>
         
         <div class="topnav">
             <a href="landingpage.jsp">Startseite</a>
             <a href="buchungen.jsp">Buchungen</a>
             <a href="kontakt.jsp">Kontakt</a>
         </div> <br />
+ 
         
