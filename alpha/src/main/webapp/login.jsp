@@ -17,7 +17,8 @@
             <label for="username">Username: </label>
             <input type="text" name="username" placeholder="JonDoe" /><br />
             <label for="password">Passwort: </label>
-            <input type="password" name="passwort" placeholder="******" />
+            <input type="password" name="passwort" placeholder="******" /><br />
+            <span style="color: red;">${errMsg}<br /></span>
             <input type="submit" value="Einloggen" />
         </form>
     </body>
