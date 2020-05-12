@@ -32,13 +32,16 @@
                     <td>${buchung.datum}</td>
                     <td>${buchung.flug.flugziel.abflug}</td>
                     <td>${buchung.flug.flugziel.ankunft}</td>
-                    <td>${buchung.datum}</td>
+                    <td>${buchung.status.status}</td>
                     
                     
                     <td><a href="exstornieren?bid=${buchung.bid}">Stornieren</a></td>
                     
+                    
                 </tr>
             </c:forEach>
+                
+                
         </table>
     </body>
 </html>
