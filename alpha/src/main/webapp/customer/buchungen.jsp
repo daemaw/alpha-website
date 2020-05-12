@@ -5,14 +5,8 @@
 --%>
 <%@include file="/WEB-INF/jspf/header.jspf" %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Meine Buchungen</title>
-    </head>
-    <body>
-        <h1>Meine Buchungen</h1>
+
+        <h2>Meine Buchungen</h2>
         
         <table border="1">
             <tr>
