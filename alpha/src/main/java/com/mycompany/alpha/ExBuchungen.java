@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eimstoa
  */
-@WebServlet(name = "ExBuchungen", urlPatterns = {"/exbuchungen"})
+@WebServlet(name = "ExBuchungen", urlPatterns = {"/customer/exbuchungen"})
 public class ExBuchungen extends HttpServlet {
 
     /**
@@ -40,8 +40,8 @@ public class ExBuchungen extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        User user = new User(2, false, "harald123", "Harald", "Gloeckler", "lol123"); // Zeile löschen sobald User über requestgetSession kommt
-        //User user = (User)request.getSession().getAttribute("user");
+        //User user = new User(2, false, "harald123", "Harald", "Gloeckler", "lol123"); // Zeile löschen sobald User über requestgetSession kommt
+        User user = (User)request.getSession().getAttribute("user");
         ArrayList<Buchung> buchungsListe = new ArrayList<>();
         String sql = "select * from buchungen " + "join fluege on buchungen.fid = fluege.fid " + "join flugziele on fluege.zid = flugziele.zid " +
                      "join stati on buchungen.sid = stati.sid " +
@@ -56,7 +56,7 @@ public class ExBuchungen extends HttpServlet {
            
             
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, 2); 
+            pstm.setInt(1, user.getUid()); 
             ResultSet rs = pstm.executeQuery();
             
             int bid = 0;
@@ -78,6 +78,7 @@ public class ExBuchungen extends HttpServlet {
                 
                 bid = rs.getInt("bid");
                 fid = rs.getInt("fid");
+                timestamp = rs.getTimestamp("datum");
                 datum = new Date(timestamp.getTime());
                 abflug = rs.getString("abflug");
                 ankunft = rs.getString("ankunft");
