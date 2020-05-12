@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,7 +34,7 @@
                     <td>${buchung.datum}</td>
                     <td>${buchung.flug.flugziel.abflug}</td>
                     <td>${buchung.flug.flugziel.ankunft}</td>
-                    <td>${buchung.statusObjekt.status}</td>
+                    <td>${buchung.datum}</td>
                     
                     
                     <td><a href="exstornieren?bid=${buchung.bid}">Stornieren</a></td>

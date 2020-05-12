@@ -73,16 +73,18 @@ public class ExLogin extends HttpServlet {
                             .withExpiresAt(date)
                             .sign(algorithm);
                     
+                    request.getSession().setAttribute("user", user);
                     request.getSession().setAttribute("token", token);
+                    
                     
                 }
                 catch(JWTCreationException exception){}
-                RequestDispatcher view = request.getRequestDispatcher("landingpage.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("customer/landingpage.jsp");
                 view.forward(request, response);
             }else{
                 request.setAttribute("errMsg", "Username oder Passwort falsch!");
                 
-                RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("/alpha/login.jsp");
                 view.forward(request, response);
             }
             

@@ -4,9 +4,9 @@
     Author     : z0040scb
 --%>
 
-<%@include file="WEB-INF/jspf/header.jspf" %>
+<%@include file="/WEB-INF/jspf/header.jspf" %>
 
-        <img src="pic/Design.jpg" height="auto"width="80%" style="display:block;margin-left:auto;margin-right:auto;">
+        <img src="/alpha/pic/Design.jpg" height="auto"width="80%" style="display:block;margin-left:auto;margin-right:auto;">
         
         <form method="GET" action="flugziel">
             <fieldset style="background-color: whitesmoke;"> 
