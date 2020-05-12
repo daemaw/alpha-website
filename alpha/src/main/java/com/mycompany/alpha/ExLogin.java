@@ -5,12 +5,17 @@
  */
 package com.mycompany.alpha;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,9 +56,36 @@ public class ExLogin extends HttpServlet {
             if (rs.next()){
                 //response.getWriter().println(request.getSession().getId());
                 
-                //TODO
-                //User user = new User(rs.getInt("uid"), username, rs.getString("vorname"), rs.getString("nachname"), passwort, rs.getBoolean("isadmin"));
-                request.getSession().setAttribute("user", "user");
+                
+                User user = new User(rs.getInt("uid"), rs.getBoolean("isadmin"), username, rs.getString("vorname"), rs.getString("nachname"), passwort);
+                
+                try{
+                    Algorithm algorithm = Algorithm.HMAC256("alpha-sec");
+                    String token;
+                    Instant time = Instant.now().plusSeconds(3600);
+                    Date date = Date.from(time);
+                    
+                    token = JWT.create()
+                            .withIssuer("alpha")
+                            .withClaim("uid", user.getUid())
+                            .withClaim("username", user.getUsername())
+                            .withClaim("isadmin", user.getAdmin())
+                            .withExpiresAt(date)
+                            .sign(algorithm);
+                    
+                    request.getSession().setAttribute("user", user);
+                    request.getSession().setAttribute("token", token);
+                    
+                    
+                }
+                catch(JWTCreationException exception){}
+                RequestDispatcher view = request.getRequestDispatcher("customer/landingpage.jsp");
+                view.forward(request, response);
+            }else{
+                request.setAttribute("errMsg", "Username oder Passwort falsch!");
+                
+                RequestDispatcher view = request.getRequestDispatcher("/alpha/login.jsp");
+                view.forward(request, response);
             }
             
         }

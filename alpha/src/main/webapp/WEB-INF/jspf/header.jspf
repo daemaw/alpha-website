@@ -7,18 +7,18 @@
         
         <title>Alpha Airlines</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="alphastyle.css" type="text/css">
+        <link rel="stylesheet" href="/alpha/alphastyle.css" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
     </head> 
     
-    <body background="Design.jpg">
-        <h1><b>&nbsp Airlines</b> <img src="pic/Logo.jpg" height="50px"width="100px" style="float:left;display:inline-block;"></h1>
+    <body background="/alpha/WEB-INF/jspf/Design.jpg">
+        <h1><b>&nbsp Airlines</b> <img src="/alpha/pic/Logo.jpg" height="50px"width="100px" style="float:left;display:inline-block;"></h1>
         
         <div class="topnav">
-            <a href="landingpage.jsp">Startseite</a>
-            <a href="buchungen.jsp">Buchungen</a>
-            <a href="kontakt.jsp">Kontakt</a>
+            <a href="/alpha/customer/landingpage.jsp">Startseite</a>
+            <a href="/alpha/customer/exbuchunge">Buchungen</a>
+            <a href="/alpha/customer/kontakt.jsp">Kontakt</a>
         </div> <br />
  
         
