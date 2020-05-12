@@ -7,20 +7,23 @@
 <%@include file="WEB-INF/jspf/header.jspf" %>
 
         <img src="pic/Design.jpg" height="auto"width="80%" style="display:block;margin-left:auto;margin-right:auto;">
+        <img src="pic/wolkencopy.jpg" height="auto"width="100%" style="display:block;margin-left:auto;margin-right:auto;">
+        
+        <br /> <br />
         
         <form method="GET" action="flugziel">
             <fieldset style="background-color: whitesmoke;"> 
                 <legend>Wählen Sie Ihren Flug</legend> <br />
                 Von :  
                 <select name="abflug">
-                    <option value="muc" id="muc">München</option>
+                    <option value="muc">München</option>
                     <option value="jfk">John F. Kennedy</option>
                     <option value="txl">Berlin - Tegel</option>
                     <option value="cdg">Paris Charles de Gaulle</option>
                 </select> &nbsp &nbsp
                 Nach : 
                 <select name="ankunft">
-                    <option value="muc" id="muc2">München</option>
+                    <option value="muc">München</option>
                     <option value="jfk">John F. Kennedy</option>
                     <option value="txl">Berlin - Tegel</option>
                     <option value="cdg">Paris Charles de Gaulle</option>
@@ -47,17 +50,7 @@
         </form> <br /> <br />
         <form>
             
-        </form>
-        
-        <script>
-            function Function() {
-                var muc = document.getElementById("muc");
-                var muc2 = document.getElementById("muc2");
-                
-                if (muc.checked == true) {muc2.style.display = "block";} else {muc2.style.display = "none";}
-            }
-        </script>
-        
+        </form>    
     </body>
  
 </html>
