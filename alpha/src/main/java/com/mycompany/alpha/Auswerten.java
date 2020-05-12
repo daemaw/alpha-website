@@ -40,6 +40,8 @@ public class Auswerten extends HttpServlet {
         String sql2 = "select count(sid) as anz_storn from buchungen where sid = ?";
         String sql3 = "select count(sid) as anz_geflog from buchungen where sid = ?";
         String sql4 = "select count(uid)-1 as anz_user from users";
+        String sql5 = "select sum(fluege.preis) as umsatz from fluege join buchungen on fluege.fid=buchungen.FID where sid = ? or sid = ?";
+
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
         Connection conn = dbPool.getConnection();
         
@@ -56,20 +58,27 @@ public class Auswerten extends HttpServlet {
             ResultSet rs2 = pstm2.executeQuery();
             rs2.next();
             stat.setAnz_storn(rs2.getInt("anz_storn"));
-            dbPool.releaseConnection(conn);
             //Bereits geflogen
             PreparedStatement pstm3 = conn.prepareStatement(sql3);
             pstm3.setInt(1, 3);
             ResultSet rs3 = pstm3.executeQuery();
             rs3.next();
             stat.setAnz_geflog(rs3.getInt("anz_geflog"));
-            dbPool.releaseConnection(conn);
             //User
             PreparedStatement pstm4 = conn.prepareStatement(sql4);
             ResultSet rs4 = pstm4.executeQuery();
             rs4.next();
             stat.setAnz_user(rs4.getInt("anz_user"));
+            //Umsatz
+            PreparedStatement pstm5 = conn.prepareStatement(sql5);
+            pstm5.setInt(1, 1);
+            pstm5.setInt(2, 3);
+            ResultSet rs5 = pstm5.executeQuery();
+            rs5.next();
+            stat.setUmsatz(rs5.getInt("umsatz"));
             dbPool.releaseConnection(conn);
+            
+            
             
         }
         catch(SQLException e){}
