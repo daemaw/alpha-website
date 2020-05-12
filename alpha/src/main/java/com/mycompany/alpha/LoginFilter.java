@@ -61,7 +61,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
         
-        if(session == null || session.getAttribute("token") == null){
+        if(session == null || session.getAttribute("token") == null || !Tokens.verifyLoginToken((String)session.getAttribute("token"))){
             res.sendRedirect("/alpha/login.jsp");
         }
         else{

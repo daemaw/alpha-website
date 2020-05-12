@@ -59,19 +59,8 @@ public class ExLogin extends HttpServlet {
                 
                 User user = new User(rs.getInt("uid"), rs.getBoolean("isadmin"), username, rs.getString("vorname"), rs.getString("nachname"), passwort);
                 
-                try{
-                    Algorithm algorithm = Algorithm.HMAC256("alpha-sec");
-                    String token;
-                    Instant time = Instant.now().plusSeconds(3600);
-                    Date date = Date.from(time);
-                    
-                    token = JWT.create()
-                            .withIssuer("alpha")
-                            .withClaim("uid", user.getUid())
-                            .withClaim("username", user.getUsername())
-                            .withClaim("isadmin", user.getAdmin())
-                            .withExpiresAt(date)
-                            .sign(algorithm);
+                try{                    
+                    String token = Tokens.createLoginToken(user);
                     
                     request.getSession().setAttribute("user", user);
                     request.getSession().setAttribute("token", token);

@@ -3,9 +3,7 @@
     Created on : 08.05.2020, 12:55:18
     Author     : Eimstoa
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="/WEB-INF/jspf/header.jspf" %>
 
 <!DOCTYPE html>
 <html>
