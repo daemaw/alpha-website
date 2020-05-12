@@ -11,13 +11,13 @@
     
     <filter>
         <filter-name>loginFilter</filter-name>
-        <filter-class>com.mycompany.LoginFilter</filter-class>
+        <filter-class>com.mycompany.alpha.LoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>loginFilter</filter-name>
         <url-pattern>/customer/*</url-pattern>
     </filter-mapping>
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>customer/landingpage.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

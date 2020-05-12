@@ -7,10 +7,6 @@ package com.mycompany.alpha;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Eimstoa
+ * @author z004366p
  */
-@WebServlet(name = "ExStornieren", urlPatterns = {"/customer/exstornieren"})
-public class ExStornieren extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/logout"})
+public class Logout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,25 +30,11 @@ public class ExStornieren extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        
-        int bid = Integer.parseInt(request.getParameter("bid"));
-        
-        String sql = "update buchungen set sid ='2' where bid=?";
-        ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
-        Connection conn = dbPool.getConnection();
-        
-        try{
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, bid);
-            pstm.executeUpdate();
-            dbPool.releaseConnection(conn);
-        }
-        catch(SQLException e){}
-        
-        RequestDispatcher view = request.getRequestDispatcher("/customer/exbuchungen");
-        view.forward(request, response);
+            throws ServletException, IOException {  
+        request.getSession().invalidate();
+ 
+        // Redrect to Home Page.
+        response.sendRedirect("/alpha");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
