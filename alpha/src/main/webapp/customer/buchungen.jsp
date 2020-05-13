@@ -5,14 +5,8 @@
 --%>
 <%@include file="/WEB-INF/jspf/header.jspf" %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Meine Buchungen</title>
-    </head>
-    <body>
-        <h1>Meine Buchungen</h1>
+
+        <h2>Meine Buchungen</h2>
         
         <table border="1">
             <tr>
@@ -33,11 +27,11 @@
                     <td>${buchung.flug.flugziel.abflug}</td>
                     <td>${buchung.flug.flugziel.ankunft}</td>
                     <td>${buchung.status.status}</td>
-                    
-                    
-                    <td><a href="exstornieren?bid=${buchung.bid}">Stornieren</a></td>
-                    
-                    
+                    <td>
+                    <c:if test="${buchung.status.sid == 1}">
+                        <a href="exstornieren?bid=${buchung.bid}">Stornieren</a>
+                    </c:if>
+                    </td>
                 </tr>
             </c:forEach>
                 
