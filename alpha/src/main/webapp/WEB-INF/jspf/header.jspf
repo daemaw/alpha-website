@@ -13,7 +13,7 @@
     </head> 
     
     <body background="/alpha/WEB-INF/jspf/Design.jpg">
-        <h1><b>&nbsp Airlines</b> <img src="/alpha/pic/Logo.jpg" height="50px"width="100px" style="float:left;display:inline-block;"></h1>
+        <h1><b>&nbsp Airlines</b> <img src="/alpha/pic/Logo.jpg" height="50px"width="120px" style="float:left;display:inline-block;"></h1>
         
         <div class="topnav">
             <a href="/alpha/customer/landingpage.jsp">Startseite</a>

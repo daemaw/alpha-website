@@ -7,12 +7,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@include file="WEB-INF/jspf/header.jspf" %>
-        <h1>Welcome to Alpha login</h1>
-        <form method="POST" action="exlogin">
+        <h2>Welcome to Alpha login</h2>
+        <form method="POST" action="exlogin"><br />
             <label for="username">Username: </label>
-            <input type="text" name="username" placeholder="JonDoe" /><br />
+            <input type="text" name="username" placeholder="JonDoe" /><br /><br />
             <label for="password">Passwort: </label>
-            <input type="password" name="passwort" placeholder="******" /><br />
+            <input type="password" name="passwort" placeholder="******" /><br /><br />
             <span style="color: red;">${errMsg}<br /></span>
             <input type="submit" value="Einloggen" />
         </form>

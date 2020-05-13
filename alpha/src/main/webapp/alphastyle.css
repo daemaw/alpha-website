@@ -1,6 +1,12 @@
 h1	{
 	font-family: Arial; 
-	color: black; 
+	color: #DF0101; 
+        font-size: 45px;
+}
+
+h2      {
+        font-family: Arial;
+        color: black;
 }
 
 form	{
@@ -21,7 +27,7 @@ ul {
 }
 
 fieldset    {
-    background-color: #CD5C5C;
+    background-color: #DF0101;
 }
 
 input   {
@@ -31,7 +37,7 @@ input   {
 
 .topnav {
         font-family: arial;
-        background-color: #FF0000;
+        background-color: #DF0101;
         overflow: hidden;
 }
 
