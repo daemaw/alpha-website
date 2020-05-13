@@ -27,15 +27,16 @@
                     <td>${buchung.flug.flugziel.abflug}</td>
                     <td>${buchung.flug.flugziel.ankunft}</td>
                     <td>${buchung.status.status}</td>
-                    
-                    
-                    <td><a href="exstornieren?bid=${buchung.bid}">Stornieren</a></td>
-                    
-                    
+                    <td>
+                    <c:if test="${buchung.status.sid=='1'} ">
+                    <a href="exstornieren?bid=${buchung.bid}">Stornieren</a>
+                    </c:if>
+                    </td>
                 </tr>
             </c:forEach>
                 
                 
         </table>
+        <p>${buchung.status.status}</p>
     </body>
 </html>
