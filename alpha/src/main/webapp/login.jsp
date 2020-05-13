@@ -13,7 +13,7 @@
             <input type="text" name="username" placeholder="JonDoe" /><br />
             <label for="password">Passwort: </label>
             <input type="password" name="passwort" placeholder="******" /><br />
-            <span style="color: red;">${errMsg}<br /></span>
+            <span style="color: red;">${errMsg}${param.msg}<br /></span>
             <input type="submit" value="Einloggen" />
         </form>
     </body>

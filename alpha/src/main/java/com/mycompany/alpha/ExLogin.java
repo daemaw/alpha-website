@@ -73,7 +73,7 @@ public class ExLogin extends HttpServlet {
             }else{
                 request.setAttribute("errMsg", "Username oder Passwort falsch!");
                 
-                RequestDispatcher view = request.getRequestDispatcher("/alpha/login.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("login.jsp");
                 view.forward(request, response);
             }
             
