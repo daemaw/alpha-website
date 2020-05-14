@@ -23,16 +23,18 @@
                     </c:forEach>
                 </select> &nbsp &nbsp
                 <input hidden name="bid" value="${bid}">
-                <input type="submit" value="Flug aktualisieren"> <br />
+                <input type="submit" value="Flug aktualisieren"> <br /> <br /> 
                 <table style="width: 300px;">
                     <tr>
                         <th>Zeit</th>
                         <th>Preis</th>
+                        <th>Flugdauer</th>
                     </tr>
                     <c:forEach var="flug" items="${flugListe}">
                     <tr>
                         <td>${flug.zeit}</td>
                         <td>${flug.preis}</td>
+                        <td>${flug.flugdauer}</td>
                     </tr>
                     </c:forEach>
                 </table>
