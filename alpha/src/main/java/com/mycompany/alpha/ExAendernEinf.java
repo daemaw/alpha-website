@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author z004366p
  */
-@WebServlet(name = "ExAendernEinf", urlPatterns = {"/exaenderneinf"})
+@WebServlet(name = "ExAendernEinf", urlPatterns = {"/customer/exaenderneinf"})
 public class ExAendernEinf extends HttpServlet {
 
     /**
@@ -38,7 +39,7 @@ public class ExAendernEinf extends HttpServlet {
         
         int bid = Integer.parseInt(request.getParameter("bid"));
         
-        int fid = Integer.parseInt(request.getParameter("fid"));
+        int fid = Integer.parseInt(request.getParameter("zeit"));
         
         String date = request.getParameter("datum");
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
@@ -47,12 +48,15 @@ public class ExAendernEinf extends HttpServlet {
         try {
             
             PreparedStatement pstm2 = conn.prepareStatement(sql);
-            
+            pstm2.setString(1, date);
+            pstm2.setInt(2, fid);
             pstm2.setInt(3, bid);
             pstm2.executeUpdate();
             
         }
         catch (SQLException e){}
+        RequestDispatcher view = request.getRequestDispatcher("/customer/exbuchungen");
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

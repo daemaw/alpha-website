@@ -14,7 +14,7 @@
             <fieldset style="background-color: whitesmoke;"> 
                 <legend>Wann möchten Sie fliegen?</legend> <br />
                 Datum :  
-                <input type="date" value="${datum}" id="datum">
+                <input type="date" value="${datum}" name="datum">
                 &nbsp &nbsp
                 Uhrzeit : 
                 <select name="zeit">

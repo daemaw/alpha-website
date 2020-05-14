@@ -43,8 +43,8 @@ public class ExPrepareAendern extends HttpServlet {
         
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
         Connection conn = dbPool.getConnection();
-        String sql = "select datum, fid, zeit, flugdauer, preis from fluege natural join buchungen where bid = ?";
-        int fid = 0;
+        String sql = "select datum, zid, zeit, flugdauer, preis from fluege natural join buchungen where bid = ?";
+        int zid = 0;
         String date = null;
         try {
             
@@ -53,14 +53,14 @@ public class ExPrepareAendern extends HttpServlet {
             ResultSet rs2 = pstm2.executeQuery();
             
             while(rs2.next()){
-                fid = rs2.getInt("fid");
+                zid = rs2.getInt("zid");
                 date = rs2.getString("datum");
             }
         }
         catch (SQLException e){}
         
         
-        String sql2 = "select  fid, zeit, flugdauer, preis from fluege where fid = ?";
+        String sql2 = "select  fid, zeit, flugdauer, preis from fluege where zid = ?";
         
         ArrayList<Flug> flList = new ArrayList();
         
@@ -70,7 +70,7 @@ public class ExPrepareAendern extends HttpServlet {
         
         try {
             PreparedStatement pstm = conn.prepareStatement(sql2);
-            pstm.setInt(1, fid);
+            pstm.setInt(1, zid);
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
@@ -84,7 +84,7 @@ public class ExPrepareAendern extends HttpServlet {
                 flList.add(flug);
             }
            
-             request.setAttribute("fid", fid);
+             request.setAttribute("zid", zid);
         request.setAttribute("datum", date);
         request.setAttribute("flugListe", flList);
         request.setAttribute("bid", bid);
