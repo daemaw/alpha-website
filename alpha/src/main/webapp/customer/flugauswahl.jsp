@@ -9,14 +9,14 @@
 <%@include file="/WEB-INF/jspf/header.jspf" %>
 
 <br />
-<form id="fluege" method="GET" action="fluege">
+<form id="fluege" method="POST" action="/alpha/customer/eintragen">
             <fieldset style="background-color: whitesmoke;"> 
                 <legend>Wann möchten Sie fliegen?</legend> <br />
                 Datum :  
-                <input type="date" id="datum">
+                <input type="date" name="datum">
                 &nbsp &nbsp
                 Uhrzeit : 
-                <select name="zeit">
+                <select name="fidu">
                     <c:forEach var="flug" items="${flugListe}">
                     <option value="${flug.fid}">${flug.datum}</option>
                     </c:forEach>

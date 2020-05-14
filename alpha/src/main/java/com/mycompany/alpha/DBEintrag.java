@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author z0041r3p
  */
-@WebServlet(name = "DBEintrag", urlPatterns = {"/eintragen"})
+@WebServlet(name = "DBEintrag", urlPatterns = {"/customer/eintragen"})
 public class DBEintrag extends HttpServlet {
 
     /**
@@ -40,11 +40,12 @@ public class DBEintrag extends HttpServlet {
         
             Flug flug = new Flug();
             
-            int fid = Integer.getInteger(request.getParameter("fid"));
+            
             User user = (User) request.getSession().getAttribute("user");
             int uid = user.getUid();
             String datum = request.getParameter("datum");
-            
+            //int fidu = Integer.parseInt(request.getParameter("fidu"));
+            int fidu = Integer.parseInt(request.getParameter("fidu"));
         String sql = "insert into buchungen(fid, uid, datum, sid) values (?,?,?,?)";
         
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
@@ -52,7 +53,7 @@ public class DBEintrag extends HttpServlet {
         
         try{
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, fid);
+            pstm.setInt(1, fidu);
             pstm.setInt(2, uid);
             pstm.setString(3, datum);
             pstm.setInt(4, 1);
@@ -60,8 +61,8 @@ public class DBEintrag extends HttpServlet {
             dbPool.releaseConnection(conn);
         }
         catch(SQLException e){}
-        RequestDispatcher view = request.getRequestDispatcher("exbuchungen");
-        
+        RequestDispatcher view = request.getRequestDispatcher("/customer/exbuchungen");
+        view.forward(request, response);
         
     }
 
