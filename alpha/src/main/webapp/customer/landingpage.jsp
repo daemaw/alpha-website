@@ -7,7 +7,7 @@
 <%@include file="/WEB-INF/jspf/header.jspf" %>
 
         <img src="/alpha/pic/787-8.png" height="auto"width="80%" style="display:block;margin-left:auto;margin-right:auto;">
-        <img src="/alpha/pic/wolkencopy.jpg" height="auto"width="100%" style="display:block;margin-left:auto;margin-right:auto;">
+        <img src="/alpha/pic/wolkenCut.jpg" height="auto"width="100%" style="display:block;margin-left:auto;margin-right:auto;">
         
         <br /> <br />
         
