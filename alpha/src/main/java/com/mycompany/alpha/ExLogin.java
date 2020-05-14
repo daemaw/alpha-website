@@ -73,7 +73,7 @@ public class ExLogin extends HttpServlet {
                     view = request.getRequestDispatcher("admin/auswerten");
                 }
                 else {
-                    view = request.getRequestDispatcher("customer/landingpage.jsp");
+                    view = request.getRequestDispatcher("expreparelandingpage");
                 }
                 view.forward(request, response);
             }else{

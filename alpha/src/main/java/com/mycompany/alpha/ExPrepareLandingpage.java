@@ -7,11 +7,18 @@ package com.mycompany.alpha;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonArrayBuilder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,23 +48,50 @@ public class ExPrepareLandingpage extends HttpServlet {
         
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
         Connection conn = dbPool.getConnection();
-        ArrayList<Flugziel> fzList = new ArrayList<>();
+        ArrayList<Flugziel> lsflug = new ArrayList<>();
+        JsonObjectBuilder fzObj = Json.createObjectBuilder();
+        String fo = null;
         
         try{
             PreparedStatement pstm = conn.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
+                int zid = rs.getInt("zid");
+                String abflug = rs.getString("abflug");
+                String ankunft = rs.getString("ankunft");
+                
                 Flugziel fz = new Flugziel();
                 fz.setZid(rs.getInt("zid"));
                 fz.setAbflug(rs.getString("abflug"));
                 fz.setAnkunft(rs.getString("ankunft"));
                 
-                fzList.add(fz);
+                lsflug.add(fz);
             }
+            
+            HashMap<String, JsonArrayBuilder> hm = new HashMap<>();
+            
+            
+            for(Flugziel fz : lsflug){
+                JsonObjectBuilder job = Json.createObjectBuilder();
+                job.add("ankunft", fz.getAnkunft());
+                job.add("zid", fz.getZid());
+                hm.putIfAbsent(fz.getAbflug(), Json.createArrayBuilder());
+                hm.get(fz.getAbflug()).add(job);
+            }
+            for(HashMap.Entry<String,  JsonArrayBuilder> entry : hm.entrySet()){
+                String key = entry.getKey();
+                JsonArrayBuilder value = entry.getValue();
+                
+                fzObj.add(key, value);
+            }
+            JsonObject jo = fzObj.build();
+            fo = jo.toString();
+            //response.getWriter().println(fo);
+            
         }
         catch (SQLException e){}
-        request.setAttribute("fzList", fzList);
+        request.setAttribute("fo", fo);
         RequestDispatcher view = request.getRequestDispatcher("/customer/landingpage.jsp");
         view.forward(request, response);
     }

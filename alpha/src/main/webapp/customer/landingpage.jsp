@@ -15,19 +15,12 @@
             <fieldset style="background-color: whitesmoke;"> 
                 <legend>Wählen Sie Ihren Flug</legend> <br />
                 Von :  
-                <select name="abflug">
-                    <option value="MUC">München</option>
-                    <option value="JFK">John F. Kennedy</option>
-                    <option value="TXL">Berlin - Tegel</option>
-                    <option value="CDG">Paris Charles de Gaulle</option>
+                <select id="abflug" name="abflug" onchange="changed(this)">
                 </select> &nbsp &nbsp
                 Nach : 
-                <select name="ankunft">
-                    <option value="MUC">München</option>
-                    <option value="JFK">John F. Kennedy</option>
-                    <option value="TXL">Berlin - Tegel</option>
-                    <option value="CDG">Paris Charles de Gaulle</option>
+                <select id="ankunft" name="ankunft">
                 </select> &nbsp &nbsp
+                <input hidden="hidden" id="zid" name="zid" value="" />
                 <input type="submit" value="Weiter"> <br />
             </fieldset>
         </form> <br /> <br />
@@ -52,6 +45,37 @@
             
         </form>    
     </body>
+    <script type="text/javascript">
+        var verbindungen = JSON.parse('${fo}');
+        console.log(Object.keys(verbindungen));
+        Object.keys(verbindungen).forEach(function (key) {
+            var opt = document.createElement('option');
+            opt.innerHTML = key;
+            opt.value = key;
+            document.getElementById("abflug").appendChild(opt);
+        });
+        
+        function changed(selectObject){
+            var selected = selectObject.value;
+            var box = document.getElementById("ankunft");
+            var length = box.options.length;
+            for (i = length-1; i >= 0; i--) {
+            box.options[i] = null;
+            }
+            verbindungen[selected].forEach(function (cont){
+                
+                var opt = document.createElement('option');
+                
+            opt.innerHTML = cont['ankunft'];
+            opt.value = cont['ankunft'];
+                document.getElementById("ankunft").appendChild(opt);
+            });
+        }
+        
+        
+      
+    </script>
+        
  
 </html>
 
