@@ -27,11 +27,13 @@
                     <tr>
                         <th>Zeit</th>
                         <th>Preis</th>
+                        <th>Flugdauer</th>
                     </tr>
                     <c:forEach var="flug" items="${flugListe}">
                     <tr>
                         <td>${flug.zeit}</td>
                         <td>${flug.preis}</td>
+                        <td>${flug.flugdauer}</td>
                     </tr>
                     </c:forEach>
                 </table>

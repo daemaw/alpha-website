@@ -77,7 +77,7 @@ public class ExPrepareAendern extends HttpServlet {
                 Timestamp timestamp = rs.getTimestamp("zeit");
                 //new Date(timestamp.getTime())
                 Flugziel fz = new Flugziel();
-                Flug flug = new Flug(rs.getInt("fid"), fz, new Date(), rs.getFloat("flugdauer"), rs.getFloat("preis"), rs.getTime("zeit"));
+                Flug flug = new Flug(rs.getInt("fid"), fz, new Date(), rs.getFloat("preis"), rs.getFloat("flugdauer"), rs.getTime("zeit"));
                 
                
                 
