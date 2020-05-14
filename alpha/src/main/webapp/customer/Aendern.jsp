@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/alpha/tablestyle.css" type="text/css">
 
 <br />
-<form id="fluege" method="GET" action="fluege">
+<form id="fluege" method="GET" action="exaenderneinf">
             <fieldset style="background-color: whitesmoke;"> 
                 <legend>Wann möchten Sie fliegen?</legend> <br />
                 Datum :  
