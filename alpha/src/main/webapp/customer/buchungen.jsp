@@ -39,7 +39,7 @@
                     </c:if>
                     </td>
                     <td>
-                    <c:if test="${buchung.status.sid == 1}">
+                    <c:if test="${buchung.status.bid == 1}">
                         <a href="/customer/exprepareaendern">Ändern</a>
                     </c:if>
                     </td>
