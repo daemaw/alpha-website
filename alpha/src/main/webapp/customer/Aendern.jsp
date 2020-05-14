@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/jspf/header.jspf" %>
+<link rel="stylesheet" href="/alpha/tablestyle.css" type="text/css">
 
 <br />
 <form id="fluege" method="GET" action="fluege">
@@ -18,9 +19,10 @@
                 Uhrzeit : 
                 <select name="zeit">
                     <c:forEach var="flug" items="${flugListe}">
-                    <option id="${flug.fid}" value="${flug.fid}">${flug.datum}</option>
+                    <option id="${flug.fid}" value="${flug.fid}">${flug.zeit}</option>
                     </c:forEach>
                 </select> &nbsp &nbsp
+                <input hidden name="bid" value="${bid}">
                 <input type="submit" value="Flug aktualisieren"> <br />
                 <table style="width: 300px;">
                     <tr>
@@ -29,7 +31,7 @@
                     </tr>
                     <c:forEach var="flug" items="${flugListe}">
                     <tr>
-                        <td>${flug.datum}</td>
+                        <td>${flug.zeit}</td>
                         <td>${flug.preis}</td>
                     </tr>
                     </c:forEach>

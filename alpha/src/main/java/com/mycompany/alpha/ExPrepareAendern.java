@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -76,9 +77,8 @@ public class ExPrepareAendern extends HttpServlet {
                 Timestamp timestamp = rs.getTimestamp("zeit");
                 //new Date(timestamp.getTime())
                 Flugziel fz = new Flugziel();
-                Flug flug = new Flug(rs.getInt("fid"), fz, rs.getTime("zeit"), rs.getFloat("preis"));
+                Flug flug = new Flug(rs.getInt("fid"), fz, new Date(), rs.getFloat("flugdauer"), rs.getFloat("preis"), rs.getTime("zeit"));
                 
-                flug.setDauer(rs.getFloat("flugdauer"));
                
                 
                 flList.add(flug);
@@ -87,6 +87,7 @@ public class ExPrepareAendern extends HttpServlet {
              request.setAttribute("fid", fid);
         request.setAttribute("datum", date);
         request.setAttribute("flugListe", flList);
+        request.setAttribute("bid", bid);
         RequestDispatcher view = request.getRequestDispatcher("/customer/Aendern.jsp");
         view.forward(request, response);
         }

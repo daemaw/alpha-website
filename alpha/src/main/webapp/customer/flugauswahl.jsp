@@ -19,7 +19,7 @@
                 Uhrzeit : 
                 <select name="fidu">
                     <c:forEach var="flug" items="${flugListe}">
-                    <option value="${flug.fid}">${flug.datum}</option>
+                    <option value="${flug.fid}">${flug.zeit}</option>
                     </c:forEach>
                 </select> &nbsp &nbsp
                 <input type="submit" value="Flug buchen"> <br /> <br /> 
@@ -30,7 +30,7 @@
                     </tr>
                     <c:forEach var="flug" items="${flugListe}">
                     <tr>
-                        <td>${flug.datum}</td>
+                        <td>${flug.zeit}</td>
                         <td>${flug.preis}</td>
                     </tr>
                     </c:forEach>
