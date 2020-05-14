@@ -59,8 +59,7 @@ public class Flugauswahl extends HttpServlet {
                 Timestamp timestamp = rs.getTimestamp("zeit");
                 //new Date(timestamp.getTime())
                 Flugziel fz = new Flugziel(rs.getInt("zid"), abflug, ankunft);
-                Flug flug = new Flug(rs.getInt("fid"), fz, rs.getTime("zeit"), rs.getFloat("preis"));
-                flug.setDauer(rs.getFloat("flugdauer"));
+                Flug flug = new Flug(rs.getInt("fid"), fz, rs.getTime("zeit"), rs.getFloat("preis"), rs.getFloat("flugdauer"), rs.getTime("zeit"));
                 
                 flList.add(flug);
             }
