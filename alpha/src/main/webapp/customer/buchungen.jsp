@@ -40,7 +40,7 @@
                     </td>
                     <td>
                     <c:if test="${buchung.status.sid == 1}">
-                        <a href="exprepareaendern?bid=${buchungen.bid}">Ändern</a>
+                        <a href="exprepareaendern?bid=${buchung.bid}">Ändern</a>
                     </c:if>
                     </td>
                 </tr>
