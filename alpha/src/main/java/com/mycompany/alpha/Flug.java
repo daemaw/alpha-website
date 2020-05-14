@@ -5,6 +5,7 @@
  */
 package com.mycompany.alpha;
 
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -17,24 +18,20 @@ public class Flug {
     private Flugziel flugziel;
     private Date datum;
     private float preis;
-    private float dauer;
-
-    public float getDauer() {
-        return dauer;
-    }
-
-    public void setDauer(float dauer) {
-        this.dauer = dauer;
-    }
+    private float flugdauer;
+    private Time zeit;
+    
 
     public Flug() {
     }
 
-    public Flug(int fid, Flugziel flugziel, Date datum, float preis) {
+    public Flug(int fid, Flugziel flugziel, Date datum, float preis, float flugdauer, Time zeit) {
         this.fid = fid;
         this.flugziel = flugziel;
         this.datum = datum;
         this.preis = preis;
+        this.flugdauer = flugdauer;
+        this.zeit = zeit;
     }
 
     public int getFid() {
@@ -68,7 +65,22 @@ public class Flug {
     public void setPreis(float preis) {
         this.preis = preis;
     }
+
+    public Time getZeit() {
+        return zeit;
+    }
+
+    public void setZeit(Time zeit) {
+        this.zeit = zeit;
+    }
     
+    public float getFlugdauer() {
+        return flugdauer;
+    }
+
+    public void setFlugdauer(float flugdauer) {
+        this.flugdauer = flugdauer;
+    }
     
     
 }

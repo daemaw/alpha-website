@@ -16,7 +16,10 @@
                 <th>Datum</th>
                 <th>Abflug</th>
                 <th>Ankunft</th>
+                <th>Uhrzeit</th>
+                <th>Flugdauer</th>
                 <th>Status</th>
+                <th></th>
                 <th></th>
                 
             </tr>
@@ -27,10 +30,17 @@
                     <td>${buchung.datum}</td>
                     <td>${buchung.flug.flugziel.abflug}</td>
                     <td>${buchung.flug.flugziel.ankunft}</td>
+                    <td>${buchung.flug.zeit}</td>
+                    <td>${buchung.flug.flugdauer}</td>
                     <td>${buchung.status.status}</td>
                     <td>
                     <c:if test="${buchung.status.sid == 1}">
                         <a href="exstornieren?bid=${buchung.bid}">Stornieren</a>
+                    </c:if>
+                    </td>
+                    <td>
+                    <c:if test="${buchung.status.bid == 1}">
+                        <a href="/customer/exprepareaendern">Ändern</a>
                     </c:if>
                     </td>
                 </tr>
