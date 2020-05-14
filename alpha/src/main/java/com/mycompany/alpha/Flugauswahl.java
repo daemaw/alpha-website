@@ -63,6 +63,7 @@ public class Flugauswahl extends HttpServlet {
             
         }
         catch (SQLException e) {}
+        request.setAttribute("flugListe", flList);
         RequestDispatcher view = request.getRequestDispatcher("/customer/flugauswahl.jsp");//TODO: Add correct link to jsp
         view.forward(request, response);
     }
