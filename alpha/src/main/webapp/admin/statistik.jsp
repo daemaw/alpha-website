@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="/alpha/tablestyle.css" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>

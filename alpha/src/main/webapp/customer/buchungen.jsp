@@ -4,6 +4,7 @@
     Author     : Eimstoa
 --%>
 <%@include file="/WEB-INF/jspf/header.jspf" %>
+<link rel="stylesheet" href="/alpha/tablestyle.css" type="text/css">
 
 
         <h2>Meine Buchungen</h2>

@@ -6,14 +6,12 @@
 package com.mycompany.alpha;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Julia
+ * @author z004366p
  */
-@WebServlet(name = "Flugauswahl", urlPatterns = {"/customer/flugauswahl"})
-public class Flugauswahl extends HttpServlet {
+@WebServlet(name = "ExPrepareLandingpage", urlPatterns = {"/expreparelandingpage"})
+public class ExPrepareLandingpage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,40 +37,29 @@ public class Flugauswahl extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String abflug = request.getParameter("abflug");
-        String ankunft = request.getParameter("ankunft");
-        
-        String sql = "select fid, fluege.zid as zid, zeit, flugdauer, preis from fluege natural join flugziele where abflug=? and ankunft=?";
-        
-        ArrayList<Flug> flList = new ArrayList();
+        String sql = "select * from flugziele";
         
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
         Connection conn = dbPool.getConnection();
+        ArrayList<Flugziel> fzList = new ArrayList<>();
         
-        try {
+        try{
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, abflug);
-            pstm.setString(2, ankunft);
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
-                Timestamp timestamp = rs.getTimestamp("zeit");
-                //new Date(timestamp.getTime())
-                Flugziel fz = new Flugziel(rs.getInt("zid"), abflug, ankunft);
-                Flug flug = new Flug(rs.getInt("fid"), fz, rs.getTime("zeit"), rs.getFloat("preis"));
-                flug.setDauer(rs.getFloat("flugdauer"));
+                Flugziel fz = new Flugziel();
+                fz.setZid(rs.getInt("zid"));
+                fz.setAbflug(rs.getString("abflug"));
+                fz.setAnkunft(rs.getString("ankunft"));
                 
-                flList.add(flug);
+                fzList.add(fz);
             }
-            
-            
-        request.setAttribute("flugListe", flList);
-        RequestDispatcher view = request.getRequestDispatcher("/customer/flugauswahl.jsp");//TODO: Add correct link to jsp
+        }
+        catch (SQLException e){}
+        request.setAttribute("fzList", fzList);
+        RequestDispatcher view = request.getRequestDispatcher("/customer/landingpage.jsp");
         view.forward(request, response);
-        }
-        catch (SQLException e) {
-            response.getWriter().println(e);
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -11,22 +11,22 @@
         
         <br /> <br />
         
-        <form method="GET" action="flugziel">
+        <form id="buchung" method="GET" action="customer/flugauswahl">
             <fieldset style="background-color: whitesmoke;"> 
                 <legend>Wählen Sie Ihren Flug</legend> <br />
                 Von :  
                 <select name="abflug">
-                    <option value="muc">München</option>
-                    <option value="jfk">John F. Kennedy</option>
-                    <option value="txl">Berlin - Tegel</option>
-                    <option value="cdg">Paris Charles de Gaulle</option>
+                    <option value="MUC">München</option>
+                    <option value="JFK">John F. Kennedy</option>
+                    <option value="TXL">Berlin - Tegel</option>
+                    <option value="CDG">Paris Charles de Gaulle</option>
                 </select> &nbsp &nbsp
                 Nach : 
                 <select name="ankunft">
-                    <option value="muc">München</option>
-                    <option value="jfk">John F. Kennedy</option>
-                    <option value="txl">Berlin - Tegel</option>
-                    <option value="cdg">Paris Charles de Gaulle</option>
+                    <option value="MUC">München</option>
+                    <option value="JFK">John F. Kennedy</option>
+                    <option value="TXL">Berlin - Tegel</option>
+                    <option value="CDG">Paris Charles de Gaulle</option>
                 </select> &nbsp &nbsp
                 <input type="submit" value="Weiter"> <br />
             </fieldset>
@@ -46,7 +46,7 @@
             <fieldset style="float:left;display:inline-block;color:white;">Keine versteckten Kosten</fieldset>
             <fieldset style="float:left;display:inline-block;color:white;">Mehr Komfort zum besseren Preis</fieldset> 
             <fieldset style="float:left;display:inline-block;color:white;">Regelmäßige Updates zu Ihrer Reise</fieldset> 
-            <fieldset style="float:left;display:inline-block;color:white;">Flexibel dank Bedenkzeit</fieldset>
+            <fieldset style="float:left;display:inline-block;color:white;">Flexibilität dank Bedenkzeit</fieldset>
         </form> <br /> <br />
         <form>
             
