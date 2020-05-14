@@ -1,0 +1,26 @@
+table, th, td   {
+    border: 1px solid black;
+    font-family: Arial;
+}
+
+th, td  {
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+table   {
+    border-collapse: collapse;
+    width: 100%;
+    border-spacing: 0;
+    cursor: default;
+}
+
+th  {
+    height: 50px;
+    vertical-align: center;
+    background-color: whitesmoke;
+}
+
+

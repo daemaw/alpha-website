@@ -11,7 +11,7 @@
         
         <br /> <br />
         
-        <form method="GET" action="flugziel">
+        <form id="buchung" method="GET" action="flugziel">
             <fieldset style="background-color: whitesmoke;"> 
                 <legend>Wählen Sie Ihren Flug</legend> <br />
                 Von :  

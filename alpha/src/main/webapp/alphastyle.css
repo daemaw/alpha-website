@@ -1,6 +1,6 @@
 h1	{
 	font-family: Arial; 
-	color: #DF0101; 
+	color: black; 
         font-size: 45px;
 }
 
@@ -26,8 +26,12 @@ ul {
         padding: 0;
 }
 
+table   {
+    
+}
+
 fieldset    {
-    background-color: #DF0101;
+    background-color: #D81911;
 }
 
 input   {
@@ -37,7 +41,7 @@ input   {
 
 .topnav {
         font-family: arial;
-        background-color: #DF0101;
+        background-color: #D81911;
         overflow: hidden;
 }
 

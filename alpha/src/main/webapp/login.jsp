@@ -25,7 +25,9 @@
                     <td colspan="2"><input type="submit" value="Einloggen" /></td>
                 </tr>
             </table>
-        </form>
-            <a href="nutzer_anlegen.jsp">Als Nutzer registrieren</a>
+        </form> <br /> <br />
+        
+        Sie sind noch nicht registriert?
+            <a href="nutzer_anlegen.jsp">Hier als Nutzer registrieren</a>
     </body>
 </html>
