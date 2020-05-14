@@ -5,28 +5,24 @@
  */
 package com.mycompany.alpha;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTCreationException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author z004366p
  */
-@WebServlet(name = "ExLogin", urlPatterns = {"/exlogin"})
-public class ExLogin extends HttpServlet {
+@WebServlet(name = "ExNutzerAnlegen", urlPatterns = {"/exnutzer_anlegen"})
+public class ExNutzerAnlegen extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,45 +36,29 @@ public class ExLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
+        String vorname = request.getParameter("vorname");
+        String nachname = request.getParameter("nachname");
         String passwort = request.getParameter("passwort");
-        
-        String sql = "select * from users where username=? and passwort=?";
+        String sql = "insert into users (username, vorname, nachname, passwort, isadmin) values (?,?,?,?, false)";
         
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
         Connection conn = dbPool.getConnection();
-        
         try{
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, username);
-            pstm.setString(2, passwort);
+            pstm.setString(2, vorname);
+            pstm.setString(3, nachname);
+            pstm.setString(4, passwort);
             
-            ResultSet rs = pstm.executeQuery();
-            if (rs.next()){
-                //response.getWriter().println(request.getSession().getId());
-                
-                
-                User user = new User(rs.getInt("uid"), rs.getBoolean("isadmin"), username, rs.getString("vorname"), rs.getString("nachname"), passwort);
-                
-                try{                    
-                    String token = Tokens.createLoginToken(user);
-                    
-                    request.getSession().setAttribute("user", user);
-                    request.getSession().setAttribute("token", token);
-                    
-                    
-                }
-                catch(JWTCreationException exception){}
-                RequestDispatcher view = request.getRequestDispatcher("customer/landingpage.jsp");
-                view.forward(request, response);
-            }else{
-                request.setAttribute("errMsg", "Username oder Passwort falsch!");
-                
-                RequestDispatcher view = request.getRequestDispatcher("login.jsp");
-                view.forward(request, response);
-            }
-            
+            pstm.executeUpdate();
+            request.setAttribute("succMsg", "Nutzer erfolgreich angelegt, Sie können sich nun einloggen");
+        RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+        view.forward(request, response);
         }
-        catch(SQLException e) {}        
+        catch (SQLException e){
+            response.getWriter().println(e.getMessage());
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

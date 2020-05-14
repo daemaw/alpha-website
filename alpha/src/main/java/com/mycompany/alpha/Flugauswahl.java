@@ -8,7 +8,10 @@ package com.mycompany.alpha;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +39,9 @@ public class Flugauswahl extends HttpServlet {
         String abflug = request.getParameter("abflug");
         String ankunft = request.getParameter("ankunft");
         
-        String sql = " ";
+        String sql = "select fid, fluege.zid as zid, zeit, flugdauer, preis from fluege natural join flugziele where abflug=? and ankunft=?";
+        
+        ArrayList<Flug> flList = new ArrayList();
         
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
         Connection conn = dbPool.getConnection();
@@ -45,10 +50,21 @@ public class Flugauswahl extends HttpServlet {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, abflug);
             pstm.setString(2, ankunft);
+            ResultSet rs = pstm.executeQuery();
+            
+            while(rs.next()){
+                Flugziel fz = new Flugziel(rs.getInt("zid"), abflug, ankunft);
+                Flug flug = new Flug(rs.getInt("fid"), fz, rs.getDate("zeit"), rs.getFloat("preis"));
+                flug.setDauer(rs.getFloat("flugdauer"));
+                
+                flList.add(flug);
+            }
             
             
         }
         catch (SQLException e) {}
+        RequestDispatcher view = request.getRequestDispatcher("/customer/flugauswahl.jsp");//TODO: Add correct link to jsp
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

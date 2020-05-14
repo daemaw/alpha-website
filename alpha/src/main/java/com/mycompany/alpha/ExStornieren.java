@@ -39,7 +39,7 @@ public class ExStornieren extends HttpServlet {
         
         int bid = Integer.parseInt(request.getParameter("bid"));
         
-        String sql = "update buchungen set sid ='2' where bid=?";
+        String sql = "update buchungen set sid = 2 where bid=?";
         ConnectionPool dbPool = (ConnectionPool)getServletContext().getAttribute("dbPool");
         Connection conn = dbPool.getConnection();
         

@@ -28,8 +28,8 @@
                     <td>${buchung.flug.flugziel.ankunft}</td>
                     <td>${buchung.status.status}</td>
                     <td>
-                    <c:if test="${buchung.status.sid=='1'} ">
-                    <a href="exstornieren?bid=${buchung.bid}">Stornieren</a>
+                    <c:if test="${buchung.status.sid == 1}">
+                        <a href="exstornieren?bid=${buchung.bid}">Stornieren</a>
                     </c:if>
                     </td>
                 </tr>
@@ -37,6 +37,5 @@
                 
                 
         </table>
-        <p>${buchung.status.status}</p>
     </body>
 </html>

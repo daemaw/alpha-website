@@ -17,6 +17,15 @@ public class Flug {
     private Flugziel flugziel;
     private Date datum;
     private float preis;
+    private float dauer;
+
+    public float getDauer() {
+        return dauer;
+    }
+
+    public void setDauer(float dauer) {
+        this.dauer = dauer;
+    }
 
     public Flug() {
     }
