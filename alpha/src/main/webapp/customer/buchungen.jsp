@@ -37,6 +37,8 @@
                     <c:if test="${buchung.status.sid == 1}">
                         <a href="exstornieren?bid=${buchung.bid}">Stornieren</a>
                     </c:if>
+                    </td>
+                    <td>
                     <c:if test="${buchung.status.sid == 1}">
                         <a href="/customer/exprepareaendern">Ändern</a>
                     </c:if>
