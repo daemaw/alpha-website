@@ -13,12 +13,12 @@
             <fieldset style="background-color: whitesmoke;"> 
                 <legend>Wann möchten Sie fliegen?</legend> <br />
                 Datum :  
-                <input type="date" id="datum">
+                <input type="date" value="${datum}" id="datum">
                 &nbsp &nbsp
                 Uhrzeit : 
                 <select name="zeit">
                     <c:forEach var="flug" items="${flugListe}">
-                    <option value="${flug.fid}">${flug.datum}</option>
+                    <option id="${flug.fid}" value="${flug.fid}">${flug.datum}</option>
                     </c:forEach>
                 </select> &nbsp &nbsp
                 <input type="submit" value="Flug aktualisieren"> <br />
@@ -38,5 +38,8 @@
         </form>
        
     </body>
+    <script type="text/javascript">
+        document.getElementById('${fid}').selected;
+    </script>
 </html>
 
