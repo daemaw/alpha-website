@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,19 +56,23 @@ public class Flugauswahl extends HttpServlet {
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
+                Timestamp timestamp = rs.getTimestamp("zeit");
+                //new Date(timestamp.getTime())
                 Flugziel fz = new Flugziel(rs.getInt("zid"), abflug, ankunft);
-                Flug flug = new Flug(rs.getInt("fid"), fz, rs.getDate("zeit"), rs.getFloat("preis"));
+                Flug flug = new Flug(rs.getInt("fid"), fz, rs.getTime("zeit"), rs.getFloat("preis"));
                 flug.setDauer(rs.getFloat("flugdauer"));
                 
                 flList.add(flug);
             }
             
             
-        }
-        catch (SQLException e) {}
         request.setAttribute("flugListe", flList);
         RequestDispatcher view = request.getRequestDispatcher("/customer/flugauswahl.jsp");//TODO: Add correct link to jsp
         view.forward(request, response);
+        }
+        catch (SQLException e) {
+            response.getWriter().println(e);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

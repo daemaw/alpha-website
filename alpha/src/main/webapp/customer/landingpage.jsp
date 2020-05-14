@@ -16,17 +16,17 @@
                 <legend>Wählen Sie Ihren Flug</legend> <br />
                 Von :  
                 <select name="abflug">
-                    <option value="muc">München</option>
-                    <option value="jfk">John F. Kennedy</option>
-                    <option value="txl">Berlin - Tegel</option>
-                    <option value="cdg">Paris Charles de Gaulle</option>
+                    <option value="MUC">München</option>
+                    <option value="JFK">John F. Kennedy</option>
+                    <option value="TXL">Berlin - Tegel</option>
+                    <option value="CDG">Paris Charles de Gaulle</option>
                 </select> &nbsp &nbsp
                 Nach : 
                 <select name="ankunft">
-                    <option value="muc">München</option>
-                    <option value="jfk">John F. Kennedy</option>
-                    <option value="txl">Berlin - Tegel</option>
-                    <option value="cdg">Paris Charles de Gaulle</option>
+                    <option value="MUC">München</option>
+                    <option value="JFK">John F. Kennedy</option>
+                    <option value="TXL">Berlin - Tegel</option>
+                    <option value="CDG">Paris Charles de Gaulle</option>
                 </select> &nbsp &nbsp
                 <input type="submit" value="Weiter"> <br />
             </fieldset>

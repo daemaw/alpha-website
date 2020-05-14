@@ -68,7 +68,13 @@ public class ExLogin extends HttpServlet {
                     
                 }
                 catch(JWTCreationException exception){}
-                RequestDispatcher view = request.getRequestDispatcher("customer/landingpage.jsp");
+                RequestDispatcher view;
+                if(user.getAdmin()){
+                    view = request.getRequestDispatcher("admin/auswerten");
+                }
+                else {
+                    view = request.getRequestDispatcher("customer/landingpage.jsp");
+                }
                 view.forward(request, response);
             }else{
                 request.setAttribute("errMsg", "Username oder Passwort falsch!");

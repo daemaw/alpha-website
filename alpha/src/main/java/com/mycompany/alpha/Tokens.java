@@ -21,9 +21,7 @@ import java.util.Date;
 public class Tokens {
     private static final String secret = "alpha-sec";
     private static final Algorithm algorithm = Algorithm.HMAC256(secret);
-    private static final JWTVerifier verifier = JWT.require(algorithm)
-        .withIssuer("alpha")
-        .build(); //Reusable verifier instance
+    
     
     public static String createLoginToken(User user) throws JWTCreationException{
         String token;
@@ -41,7 +39,8 @@ public class Tokens {
         return token;
     }
     
-    public static boolean verifyLoginToken(String token) {
+    public static boolean verifyLoginToken(String token, User user) {
+        JWTVerifier verifier = JWT.require(algorithm).withClaim("uid", user.getUid()).withClaim("isadmin", user.getAdmin()).build();
         try{
             DecodedJWT jwt = verifier.verify(token);
         }
@@ -50,4 +49,6 @@ public class Tokens {
         }
         return true;
     }
+    
+    
 }

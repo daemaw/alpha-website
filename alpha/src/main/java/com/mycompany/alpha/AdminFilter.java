@@ -25,8 +25,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author z004366p
  */
-@WebFilter(filterName = "LoginFilter", urlPatterns = {"/customer/*"})
-public class LoginFilter implements Filter {
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"/admin/*"})
+public class AdminFilter implements Filter {
     
     private static final boolean debug = true;
 
@@ -35,7 +35,7 @@ public class LoginFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public LoginFilter() {
+    public AdminFilter() {
     }    
     
    
@@ -60,12 +60,14 @@ public class LoginFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest)request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
+        String token = (String)session.getAttribute("token");
+        
         User user = (User)session.getAttribute("user");
         
-        if(session == null || session.getAttribute("token") == null || !Tokens.verifyLoginToken((String)session.getAttribute("token"),user)){
+        if(session == null || token == null || !Tokens.verifyLoginToken(token, user) || user.getAdmin()){
             res.sendRedirect("/alpha/login.jsp?msg=Nicht%20eingeloggt");
         }
-        else{
+        else {
             chain.doFilter(request, response);
         }
 

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author z0041r3p
  */
-@WebServlet(name = "Auswerten", urlPatterns = {"/auswerten"})
+@WebServlet(name = "Auswerten", urlPatterns = {"/admin/auswerten"})
 public class Auswerten extends HttpServlet {
 
     /**
