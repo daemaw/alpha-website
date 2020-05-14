@@ -46,7 +46,7 @@
             <fieldset style="float:left;display:inline-block;color:white;">Keine versteckten Kosten</fieldset>
             <fieldset style="float:left;display:inline-block;color:white;">Mehr Komfort zum besseren Preis</fieldset> 
             <fieldset style="float:left;display:inline-block;color:white;">Regelmäßige Updates zu Ihrer Reise</fieldset> 
-            <fieldset style="float:left;display:inline-block;color:white;">Flexibel dank Bedenkzeit</fieldset>
+            <fieldset style="float:left;display:inline-block;color:white;">Flexibilität dank Bedenkzeit</fieldset>
         </form> <br /> <br />
         <form>
             
