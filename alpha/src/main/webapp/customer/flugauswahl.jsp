@@ -38,11 +38,7 @@
                     
             </fieldset>
         </form>
-       
 
-<script>
-        
-</script>
 
     </body>
 </html>
