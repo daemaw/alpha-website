@@ -62,7 +62,7 @@ public class ExBuchungen extends HttpServlet {
             
             int bid = 0;
             int fid = 0;
-            java.util.Date datum = null;
+            Date datum = null;
             Timestamp timestamp = null;
             String abflug = null;
             String ankunft = null;
@@ -82,6 +82,7 @@ public class ExBuchungen extends HttpServlet {
                 bid = rs.getInt("bid");
                 fid = rs.getInt("fid");
                 timestamp = rs.getTimestamp("datum");
+                
                 datum = new Date(timestamp.getTime());
                 abflug = rs.getString("abflug");
                 ankunft = rs.getString("ankunft");
