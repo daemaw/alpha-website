@@ -16,6 +16,7 @@
                 <legend>Wählen Sie Ihren Flug</legend> <br />
                 Von :  
                 <select id="abflug" name="abflug" onchange="changed(this)">
+                    <option selected value="" disabled>Bitte wählen...</option>
                 </select> &nbsp &nbsp
                 Nach : 
                 <select id="ankunft" name="ankunft">

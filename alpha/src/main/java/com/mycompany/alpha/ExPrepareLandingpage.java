@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author z004366p
  */
-@WebServlet(name = "ExPrepareLandingpage", urlPatterns = {"/expreparelandingpage"})
+@WebServlet(name = "ExPrepareLandingpage", urlPatterns = {"/customer/expreparelandingpage"})
 public class ExPrepareLandingpage extends HttpServlet {
 
     /**
@@ -92,7 +92,7 @@ public class ExPrepareLandingpage extends HttpServlet {
         }
         catch (SQLException e){}
         request.setAttribute("fo", fo);
-        RequestDispatcher view = request.getRequestDispatcher("/customer/landingpage.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("landingpage.jsp");
         view.forward(request, response);
     }
 

@@ -13,7 +13,7 @@
         <title>Statistik</title>
     </head>
     <body>
-        <h1>Statistik</h1>
+        <h1 style="font-family:'Arial'">Statistik</h1>
         <table border="1">
             <tr>
                 <th>Anzahl Stornierungen</th>

@@ -16,10 +16,10 @@
         <img src="/alpha/pic/Logo.jpg" height="50px"width="120px" style="margin-right:10px;float:left;display:inline-block;"> 
         
         <div class="topnav">
-            <a href="/alpha/expreparelandingpage">Startseite</a>
-            <a href="/alpha/expreparelandingpage">Buchen</a>
+            <a href="/alpha/customer/expreparelandingpage">Startseite</a>
+            <a href="/alpha/customer/expreparelandingpage">Buchen</a>
             <a href="/alpha/customer/exbuchungen">Meine Buchungen</a>
-            <a href="/alpha/customer/kontakt.jsp">Kontakt</a>
+            <a href="/alpha/kontakt.jsp">Kontakt</a>
             <c:if test="${user != null}">
                 <a href="/alpha/logout">Logout</a>
             </c:if>
